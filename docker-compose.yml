@@ -1,0 +1,13 @@
+services:
+  covid-analysis:
+    build: .
+    ports:
+      - "8888:8888"
+    volumes:
+      # Монтируем текущую папку проекта в /app (чтение+запись)
+      - .:/app
+      # Отдельно монтируем папку output для сохранения результатов
+      - ./output:/app/output
+    working_dir: /app
+    environment:
+      - JAVA_HOME=/usr/lib/jvm/java-21-openjdk-amd64
